@@ -1,1 +1,6 @@
- 
+ name: Testing git actions
+ on:
+   pull_request:
+      types: [opened]
+      branches:
+       - main
