@@ -1,16 +1,16 @@
- name: Testing git actions
- on:
-   pull_request:
-      types: [opened]
-      branches:
-       - main
-   jobs:
-    build:
-      name: Build Project
-      runs-on: ubuntu-latest
-      steps:
-       run: gh pr comment $PR_URL --body "Thanks for the PR"
-       env: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR_URL: ${{ github.event.pull_request.html_url }}
-         
+name: Testing git actions
+on:
+  pull_request:
+    types: [opened]
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        run: gh pr comment ${{ github.event.pull_request.html_url }} --body "Thanks for the PR"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
